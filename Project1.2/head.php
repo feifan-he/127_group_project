@@ -21,3 +21,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COSI 127b</title>
 </head>
+
+<body>
+
+
+
+
+    <?php
+
+// generic table builder. It will automatically build table data rows irrespective of result
+class TableRows extends RecursiveIteratorIterator
+{
+    public function __construct($it)
+    {
+        parent::__construct($it, self::LEAVES_ONLY);
+    }
+    public function current()
+    {
+        return "<td style='text-align:center'>" . parent::current() . "</td>";
+    }
+    public function beginChildren()
+    {
+        echo "<tr>";
+    }
+    public function endChildren()
+    {
+        echo "</tr>" . "\n";
+    }
+}
+
+function execute_query($query)
+{
+    try {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "COSI127b";
+
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // prepare statement for executions. This part needs to change for every query
+        $stmt = $conn->prepare($query);
+
+        // execute statement
+        $stmt->execute();
+
+        // set the resulting array to associative.
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+
+    return new TableRows(new RecursiveArrayIterator($stmt->fetchAll()));
+
+}
+
+function generate_table($columns, $table)
+{
+    echo "<table class='table table-md table-bordered'><thead class='thead-dark' style='text-align: center'><tr>";
+
+    foreach ($columns as $col) {
+        echo "<th class='col-md-2'>$col</th>";
+    }
+
+    echo "</tr></thead>";
+    foreach ($table as $k => $v) {
+        echo $v;
+    }
+
+    echo "</table>";
+}
+
+?>
