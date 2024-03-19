@@ -5,6 +5,7 @@
 
 
     <div class="container">
+        <h4> Like a movie</h4>
         <form method="post" action="index.php">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Enter user email" name="inputEmail">
