@@ -14,10 +14,19 @@
                 <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="show_all.php">Show All</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="motion_picture.php">Motion_Picture</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="movies.php">Movies</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="actors.php">Actors</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="people.php">People</a>
             </li>
         </ul>
     </div>

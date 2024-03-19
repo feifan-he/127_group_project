@@ -2,12 +2,9 @@ CREATE TABLE
     MotionPicture (
         id INT PRIMARY KEY,
         name VARCHAR(255),
-        rating FLOAT CHECK (
-            rating >= 0
-            AND rating <= 10
-        ),
+        rating DECIMAL(3, 1),
         production VARCHAR(255),
-        budget DECIMAL(15, 2)
+        budget BIGINT
     );
 
 CREATE TABLE
@@ -19,8 +16,8 @@ CREATE TABLE
 
 CREATE TABLE
     Likes (
-        uemail VARCHAR(255),
         mpid INT,
+        uemail VARCHAR(255),
         PRIMARY KEY (uemail, mpid),
         FOREIGN KEY (uemail) REFERENCES User (email),
         FOREIGN KEY (mpid) REFERENCES MotionPicture (id)
@@ -46,7 +43,7 @@ CREATE TABLE
         name VARCHAR(255),
         nationality VARCHAR(255),
         dob DATE,
-        gender ENUM ('male', 'female', 'other')
+        gender ENUM ('M', 'F')
     );
 
 CREATE TABLE
