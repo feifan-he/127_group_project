@@ -3,6 +3,7 @@
 <body>
     <?php include "title.php";?>
     <div class="container">
+        <h4> Find the movies that are above a budget. </h4>
         <form method="post" action="movies.php">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Enter minimum budget" name="inputBudget">
@@ -17,7 +18,7 @@
 $columns = ['boxoffice_collection', 'mpid', 'id', 'name', 'rating', 'production', 'budget'];
 $columns_str = join(',', $columns);
 if (isset($_POST['submitted'])) {
-    $budgetLimit = $_POST["inputBudget"];
+    $budgetLimit = intval($_POST["inputBudget"]);
 } else {
     $budgetLimit = 0;
 }

@@ -56,8 +56,6 @@ if (isset($_POST['submitted'])) {
 ?>
 
 
-
-
         <h4> Motion Pictures that have a higher rating than the average rating of all comedy Motion
             Pictures. </h4>
 

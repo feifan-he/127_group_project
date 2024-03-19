@@ -4,6 +4,7 @@
     <?php include "title.php";?>
 
     <div class="container">
+        <h4> Find the actors that are above an id. </h4>
         <form method="post" action="actors.php">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Enter minimum id" name="inputId">
