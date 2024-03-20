@@ -61,7 +61,7 @@ if (isset($_POST['submitted'])) {
 
         <?php
 
-$columns = ['name', 'ratings'];
+$columns = ['name', 'rating'];
 $columns_str = join(',', $columns);
 
 $table = execute_query("SELECT mp.name, mp.rating
